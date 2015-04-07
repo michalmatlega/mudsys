@@ -83,6 +83,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< HEAD
 # Additional locations of static files
 STATICFILES_DIRS = (
 # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -97,3 +98,6 @@ TEMPLATE_DIRS = (
 # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'templates'),
 )
+=======
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+>>>>>>> abc0225c3e6bda64117a3763b7ef24bee99570a5
