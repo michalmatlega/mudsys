@@ -1,0 +1,16 @@
+<h1>{{ chat.name }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'chat:reply' chat.id %}" method="post">
+{% csrf_token %}
+<input type="text" name="message" />
+<input type="submit" value="Send" />
+</form>
+
+{% for message in chat.message_set.all %}
+<ul>
+  <li>{{ message.datetime }}	|	{{ message.user }}:		{{ message.content }}</li>
+</ul>
+
+{% endfor %}
