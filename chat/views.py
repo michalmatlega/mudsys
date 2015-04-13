@@ -4,7 +4,6 @@ from django.shortcuts import render, get_object_or_404
 from chat.models import ChatRoom, Message
 
 from django.contrib.auth.models import User
-user = User.objects.get(id=1)
 
 import datetime
  
@@ -25,7 +24,7 @@ def reply(request, chat_room_id):
 	m = Message()
 	m.content = request.POST['message']
 	m.datetime = datetime.datetime.now()
-	m.user = user
+	m.user = request.user
 	chat.message_set.add(m)
 	#chat.save()
 	return render(request, 'chats/chat_room.html', {'chat': chat})
