@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
+from django.template import RequestContext
 
 def login(request):
     c = {}
@@ -21,7 +22,7 @@ def auth_view(request):
     
 def loggedin(request):
     return render_to_response('loggedin.html', 
-                              {'full_name': request.user.username})
+                              context_instance=RequestContext(request))
 
 def invalid_login(request):
     return render_to_response('invalid_login.html')

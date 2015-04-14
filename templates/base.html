@@ -12,15 +12,24 @@
 </head>
 
 <body>
-	You are logged as {{ request.user.username }}
+	{% if user.is_authenticated %}
+
+    You are logged as {{ user.get_full_name }}. <a href="/accounts/logout">Logout</a>
+
+    {% else %}
+
+    Please <a href="/accounts/login">login</a>
+
+    {% endif %}
 
     <div id="sidebar">
         {% block sidebar %}
         <ul>
-            <li><a href="/accounts/login">Login</a></li>
-            <li><a href="/accounts/logout">Logout</a></li>
+            
             <li><a href="/chats/">Chats</a></li>
+            <li><a href="/pm/">Private Messages</a></li>
             <li><a href="/files/">Files</a> </li>
+            <li><a href="/taskman/">Taskman</a> </li>
             <li><a href="/admin/">Admin</a></li>
         </ul>
         {% endblock %}

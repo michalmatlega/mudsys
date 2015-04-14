@@ -2,9 +2,6 @@
 
 {% block content %}
 
-  <h2>Hi {{full_name}} you are now logged in!</h2>
-  <p>Click <a href="/accounts/logout/">here</a> to logout.</p>
-  
-  <p>Click <a href="/accounts/profile/">here</a> to edit your profile information</p>
+  <h2>Hi {{user.get_full_name}} you are now logged in!</h2>
 
 {% endblock %}
