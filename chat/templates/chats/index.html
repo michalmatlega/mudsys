@@ -1,4 +1,8 @@
-<h2>Dostępne czaty</h2>
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available chats:</h2>
 
 {% if chat_list %}
 <ul>
@@ -18,3 +22,5 @@
 No chats are available.
  
 {% endif %}
+
+{% endblock %}
