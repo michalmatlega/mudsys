@@ -1,5 +1,2 @@
-#pycache
-
+db.sqlite3
 *.pyc
-*.sqlite3
-
