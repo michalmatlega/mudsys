@@ -24,10 +24,11 @@ def send(request):
 	msg = PMessage()
 	msg.fromUser = request.user
 	msg.toUser = request.POST['touser']
+	msg.subject = request.POST['subject']
 	msg.content = request.POST['content']
 	msg.datetime = datetime.datetime.now()
 	msg.save()
-	return null
+	return render(request,"pm/outbox.html")
 
-def show(request):
-	return null
+def show(request,msg_id):
+	return render(request,'pm/')

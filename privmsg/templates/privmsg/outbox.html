@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>OUTBOX:</h2>
+
+{% if outbox_list %}
+<ul>
+<ul>{% for msg in outbox_list %}</ul>
+</ul>
+ 
+<ul>
+<ul>
+    <li><a id="" href="{% url 'privmsg:show' msg.id %}"> {{ msg.subject }}</a></li>
+</ul>
+</ul>
+ 
+<ul>{% endfor %}</ul>
+ 
+{% else %}
+ 
+Your outbox is empty
+ 
+{% endif %}
+
+{% endblock %}
