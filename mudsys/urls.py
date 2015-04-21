@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'mudsys.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    #url(r'^(/)?$', RedirectView.as_view(url='/chats/')),
+    url(r'^(/)?$', RedirectView.as_view(url='/accounts/login')),
      #url(r'^(/)?$', include('django.contrib.auth.urls'))
      url(r'^chats/', include('chat.urls', namespace='chat')),
      #url(r'^files/', include('fileman.urls', namespace='fileman')),
