@@ -23,7 +23,7 @@ def outbox(request):
 def send(request):
 	msg = PMessage()
 	msg.fromUser = request.user
-	msg.toUser = request.POST['touser']
+	msg.toUser = User.objects.get(username = request.POST['touser'])
 	msg.subject = request.POST['subject']
 	msg.content = request.POST['content']
 	msg.datetime = datetime.datetime.now()
@@ -31,4 +31,4 @@ def send(request):
 	return render(request,"pm/outbox.html")
 
 def show(request,msg_id):
-	return render(request,'pm/')
+	return render(request,'pm/show.html')

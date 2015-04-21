@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+Date: {{ msg.datetime }} 
+From: {{ msg.fromUser }}	
+Subject: {{ msg.subject }}	
+{{ msg.content }}
+
+
+
+{% endblock %}
