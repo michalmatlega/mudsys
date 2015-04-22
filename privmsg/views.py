@@ -31,4 +31,13 @@ def send(request):
 	return render(request,"pm/outbox.html")
 
 def show(request,msg_id):
-	return render(request,'pm/show.html')
+	msg = PMessage.objects.get(id = msg_id)
+	
+	if msg.read == False and msg.toUser == request.user:
+		msg.read = True
+		msg.readdatetime = datetime.datetime.now()
+
+	context = {
+		'msg': msg,
+	}
+	return render(request,'pm/show.html', context)
