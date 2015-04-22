@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>OUTBOX:</h2>
+
+{% if outbox_list %}
+<ul>
+<ul>{% for msg in outbox_list %}</ul>
+</ul>
+ 
+<ul>
+<ul>
+    <li><a id="" href="{% url 'privmsg:show' msg.id %}"> {{ msg.subject }}</a></li>
+</ul>
+</ul>
+ 
+<ul>{% endfor %}</ul>
+ 
+{% else %}
+ 
+Your outbox is empty
+ 
+{% endif %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'privmsg:send' %}" method="post">
+{% csrf_token %}
+<input type="text" name="touser" />
+<input type="text" name="subject" />
+<input type="textarea" name="content" rows="10" cols="30" />
+<input type="submit" value="Send" />
+</form>
+
+{% endblock %}
