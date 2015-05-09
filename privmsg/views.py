@@ -30,12 +30,17 @@ def send(request):
 	msg.save()
 	return render(request,"pm/outbox.html")
 
-def show(request,msg_id):
+def readMsg(request,msg_id):
 	msg = PMessage.objects.get(id = msg_id)
-	
 	if msg.read == False and msg.toUser == request.user:
 		msg.read = True
 		msg.readdatetime = datetime.datetime.now()
+		msg.save()
+
+def show(request,msg_id):
+	readMsg(request,msg_id)
+
+	msg = PMessage.objects.get(id = msg_id)
 
 	context = {
 		'msg': msg,

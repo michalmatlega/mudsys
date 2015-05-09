@@ -4,8 +4,10 @@
 
 Date: {{ msg.datetime }} <br/>
 From: {{ msg.fromUser }}	<br/>
+To: {{ msg.toUser }}  <br/>
 Subject: {{ msg.subject }}	<br/>
-Read: {{ msg.readdatetime }} <br/><br/>
+isRead: {{ msg.read }} <br/>
+ReadTime: {{ msg.readdatetime }} <br/><br/>
 {{ msg.content }}
 
 
