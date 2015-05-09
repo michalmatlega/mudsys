@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'privmsg:send' %}" method="post">
+{% csrf_token %}
+<input type="text" name="touser" />
+<input type="text" name="subject" />
+<input type="textarea" name="content" />
+<input type="submit" value="Send" />
+</form>
+
+
+{% endblock %}

@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 db.sqlite3
 *.pyc
+=======
+#pycache
+
+*.pyc
+*.sqlite3
+>>>>>>> base-site
