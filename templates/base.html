@@ -1,15 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{% block title %}My Base Template{% endblock %}</title>
-
-    <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/default.css" >
-	
-    <script src="{% get_static_prefix %}js/jquery-2.0.0.min.js"></script>
-    <script src="{% get_static_prefix %}js/ajax.js"></script>
-    
-</head>
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 <body>
 	{% if user.is_authenticated %}
@@ -22,22 +13,26 @@
 
     {% endif %}
 
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            
-            <li><a href="/chats/">Chats</a></li>
-            <li><a href="/pm/inbox">Inbox</a></li>
-            <li><a href="/pm/outbox">Outbox</a></li>
-            <li><a href="/files/">Files</a> </li>
-            <li><a href="/taskman/">Taskman</a> </li>
-            <li><a href="/history/">History</a> </li>
-            <li><a href="/admin/">Admin</a></li>
-        </ul>
-        {% endblock %}
+    {% block bootstrap3_content %}
+    <div class="container">
+        <h1>{% block title %}mudsys{% endblock %}</h1>
+
+        <p>
+            <a href="/chats/">Chats</a>
+            <a href="/pm/inbox/">Inbox</a>
+            <a href="/pm/outbox/">Outbox</a>
+            <a href="/files/">Files</a>
+            <a href="/taskman/">Taskman</a>
+            <a href="/history/">History</a>
+            <a href="/admin/">Admin</a>
+        </p>
+
+        {% bootstrap_messages %}
+
+        {% block content %}(no content){% endblock %}
     </div>
-        
-        {% block content %}This is the content area{% endblock %}
+
+    {% endblock %}
 	
 	
 		
