@@ -25,12 +25,21 @@ Your outbox is empty
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'privmsg:send' %}" method="post">
-{% csrf_token %}
-<input type="text" name="touser" />
-<input type="text" name="subject" />
-<input type="textarea" name="content" rows="10" cols="30" />
-<input type="submit" value="Send" />
-</form>
+<h2>Write new message:</h2>
+  <form role="form" action="{% url 'privmsg:send' %}" method="post">
+  	{% csrf_token %}
+    <div class="form-group">
+      <label for="touser">To:</label>
+      <input type="touser" class="form-control" id="touser" name="touser" placeholder="Enter user">
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input type="subject" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Send</button>
+  </form>
 
 {% endblock %}
