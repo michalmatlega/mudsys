@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^outbox/$', views.outbox, name='outbox'),
     url(r'^inbox/$', views.inbox, name='inbox'),
     url(r'^send/$', views.send, name='send'),
+    url(r'^(?P<msg_id>\d+)/reply/$', views.reply, name='reply'),
 )
