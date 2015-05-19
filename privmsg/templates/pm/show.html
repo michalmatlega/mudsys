@@ -9,6 +9,15 @@ Subject: {{ msg.subject }}	<br/>
 ReadTime: {{ msg.readdatetime }} <br/><br/>
 {{ msg.content }}
 
+<h2>Write new message:</h2>
+  <form role="form" action="{% url 'privmsg:reply' msg.id %}" method="post">
+  	{% csrf_token %}
+    <div class="form-group">
+      <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Reply</button>
+  </form>
+
 
 
 {% endblock %}

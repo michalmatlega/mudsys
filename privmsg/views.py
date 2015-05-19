@@ -46,3 +46,18 @@ def show(request,msg_id):
 		'msg': msg,
 	}
 	return render(request,'pm/show.html', context)
+
+def reply(request,msg_id):
+	msgre = PMessage.objects.get(id = msg_id)
+	
+	msgtosend = PMessage()
+	
+	msgtosend.fromUser = request.user
+	msgtosend.toUser = msgre.fromUser
+	msgtosend.content = request.POST['content']
+	msgtosend.datetime = datetime.datetime.now()
+	msgtosend.subject = "RE: " + msgre.subject
+
+	msgtosend.save()
+
+	return render(request,"pm/outbox.html")
