@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\','/')
+# MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static').replace('\\','/')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'chat',
     'fileman',
     'privmsg',
+    'taskman',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +68,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
