@@ -1,5 +1,6 @@
 from django.db import models
 
+from django.contrib.auth.models import Group
 from django.conf import settings
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
@@ -7,6 +8,7 @@ AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 class ChatRoom(models.Model):
 	name = models.CharField(max_length=200)
+	group = models.ForeignKey(Group)
 	def __str__(self):
 		return self.name
 

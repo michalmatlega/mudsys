@@ -5,17 +5,11 @@
 <h2>Available chats:</h2>
 
 {% if chat_list %}
-<ul>
-<ul>{% for chat in chat_list %}</ul>
-</ul>
- 
-<ul>
-<ul>
-    <li><a id="" href="{% url 'chat:chat_room' chat.id %}"> {{ chat.name }}</a></li>
-</ul>
-</ul>
- 
-<ul>{% endfor %}</ul>
+<table class="table">
+	{% for chat in chat_list %}
+	<tr><td><a id="" href="{% url 'chat:chat_room' chat.id %}"> {{ chat.name }}</a></td><td>{{chat.group.name}}</td></tr>
+	{% endfor %}
+</table>
  
 {% else %}
  
