@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Tasks list:</h2>
+
+{% for x in item %}
+<p>{{ x.name }} - {{ x.created|date:"D d M Y" }}</p>
+
+<p>{{ x.done }}</p>
+<hr/>
+
+{% endfor %}
+
+{% endblock %}
