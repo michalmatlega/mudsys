@@ -26,4 +26,5 @@ def list(request):
         context_instance=RequestContext(request)
     )
 
-
+def delete(request, id):
+    Document.objects.filter(id=id).delete()
