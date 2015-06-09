@@ -23,5 +23,5 @@ class Item(models.Model):
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ["name", "created", "priority", "difficulty", "done"]
-    search_fields = ["name"]
+    list_display = ["name", "user", "created", "desc", "priority", "difficulty", "done", "progress"]
+    search_fields = ["priority"]
