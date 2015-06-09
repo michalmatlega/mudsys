@@ -2,12 +2,26 @@
 
 {% block content %}
 
-Date: {{ msg.datetime }} <br/>
-From: {{ msg.fromUser }}	<br/>
-To: {{ msg.toUser }}  <br/>
-Subject: {{ msg.subject }}	<br/>
-ReadTime: {{ msg.readdatetime }} <br/><br/>
-{{ msg.content }}
+<table class="table">
+
+<tr><td>Date:</td> <td>{{ msg.datetime }}</td></tr>
+
+
+<tr><td>From:</td> <td>{{ msg.fromUser }}	</td></tr>
+<tr><td>To:</td> <td>{{ msg.toUser }}  </td></tr>
+<tr><td>Subject:</td> <td>{{ msg.subject }}	</td></tr>
+<tr><td>ReadTime:</td> <td>{{ msg.readdatetime }} </td></tr>
+<tr><td>{{ msg.content }}</td></tr>
+</table>
+
+<h2>Write new message:</h2>
+  <form role="form" action="{% url 'privmsg:reply' msg.id %}" method="post">
+  	{% csrf_token %}
+    <div class="form-group">
+      <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Reply</button>
+  </form>
 
 
 
