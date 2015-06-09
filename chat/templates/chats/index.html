@@ -6,8 +6,18 @@
 
 {% if chat_list %}
 <table class="table">
+	<tr>
+		<th>Name</th>
+		<th>Group</th>
+		<th>Messages</th>
+	</tr>
+
 	{% for chat in chat_list %}
-	<tr><td><a id="" href="{% url 'chat:chat_room' chat.id %}"> {{ chat.name }}</a></td><td>{{chat.group.name}}</td></tr>
+	<tr>
+		<td><a id="" href="{% url 'chat:chat_room' chat.id %}"> {{ chat.name }}</a></td>
+		<td>{{ chat.group.name }}</td>
+		<td>{{ chat.message_set.count }}</td>
+	</tr>
 	{% endfor %}
 </table>
  
