@@ -5,7 +5,7 @@
 <body>
 	{% if user.is_authenticated %}
 
-    You are logged as {{ user.get_full_name }}. You are in {{user.groups.all.0}} group. <a href="/accounts/logout">Logout</a>
+    You are logged as {{ user.get_full_name }}. <a href="/accounts/logout">Logout</a>
 
     {% else %}
 
@@ -14,36 +14,23 @@
     {% endif %}
 
     {% block bootstrap3_content %}
-    
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">mudsys</a>
-            </div>
+    <div class="container">
+        <h1>{% block title %}mudsys{% endblock %}</h1>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                <li class="active"><a href="/chats/">Chats <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/pm/inbox/">Inbox <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/pm/outbox/">Outbox <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/files/">Files <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/taskman/">Taskman <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/history/">History <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="/admin/">Admin <span class="sr-only">(current)</span></a></li>
+        <p>
+            <a href="/chats/">Chats</a>
+            <a href="/pm/inbox/">Inbox</a>
+            <a href="/pm/outbox/">Outbox</a>
+            <a href="/files/">Files</a>
+            <a href="/tasks/">Taskman</a>
+            <a href="/history/">History</a>
+            <a href="/admin/">Admin</a>
+        </p>
 
-            </div>
+        {% bootstrap_messages %}
 
-            {% bootstrap_messages %}
-
-            {% block content %}(no content){% endblock %}
-        </div>
-    </nav>
+        {% block content %}(no content){% endblock %}
+    </div>
 
     {% endblock %}
 	
