@@ -5,7 +5,11 @@
 <body>
 	{% if user.is_authenticated %}
 
+<<<<<<< HEAD
     You are logged as {{ user.get_full_name }}. <a href="/accounts/logout">Logout</a>
+=======
+    You are logged as <b> {{ user.get_full_name }} </b>. You are in <b>{{user.groups.all.0}}</b> group. <a href="/accounts/logout">Logout</a>
+>>>>>>> modelchanges
 
     {% else %}
 

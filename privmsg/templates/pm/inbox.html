@@ -5,17 +5,25 @@
 <h2>INBOX:</h2>
 
 {% if inbox_list %}
-<ul>
-<ul>{% for msg in inbox_list %}</ul>
-</ul>
- 
-<ul>
-<ul>
-    <li><a id="" href="{% url 'privmsg:show' msg.id %}"> {{ msg.subject }}</a></li>
-</ul>
-</ul>
- 
-<ul>{% endfor %}</ul>
+<table class="table">
+  <tr>
+    <th>Subject</th>
+    <th>From</th>
+    <th>Date</th>
+    <th>Read</th>
+  </tr>
+
+  {% for msg in inbox_list %}
+  <tr>
+    <td><a id="" href="{% url 'privmsg:show' msg.id %}">{{ msg.subject }}</a></td>
+    <td>{{ msg.fromUser }}</td>
+    <td>{{ msg.datetime }}</td>
+    <td>{{ msg.readdatetime }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
  
 {% else %}
  
