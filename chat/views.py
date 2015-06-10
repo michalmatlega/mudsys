@@ -3,12 +3,18 @@ from django.shortcuts import render, get_object_or_404
  
 from chat.models import ChatRoom, Message
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 import datetime
  
 def index(request):
-	chat_rooms = ChatRoom.objects.order_by('name')[:5]
+	#if request.user.is_superuser:
+
+	chat_rooms = ChatRoom.objects.all
+	#else:
+	#	chat_rooms = ChatRoom.objects.filter(group = request.user.groups.all()[0])
+	
+	#chat_rooms = ChatRoom.objects.all
 	context = {
 		'chat_list': chat_rooms,
 	}

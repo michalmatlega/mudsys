@@ -21,13 +21,24 @@ def outbox(request):
 	return render(request,'pm/outbox.html', context)
 
 def send(request):
-	msg = PMessage()
-	msg.fromUser = request.user
-	msg.toUser = User.objects.get(username = request.POST['touser'])
-	msg.subject = request.POST['subject']
-	msg.content = request.POST['content']
-	msg.datetime = datetime.datetime.now()
-	msg.save()
+	
+
+	receiversstr = request.POST['touser'].replace(" ","")
+	receivers = receiversstr.split(",")
+
+	for i in receivers:
+		msg = PMessage()
+		msg.fromUser = request.user
+		msg.toUser = User.objects.get(username = i)
+		msg.subject = request.POST['subject']
+		msg.content = request.POST['content']
+		msg.datetime = datetime.datetime.now()
+		msg.save()
+
+	
+
+
+	
 	return render(request,"pm/outbox.html")
 
 def readMsg(request,msg_id):
@@ -46,3 +57,18 @@ def show(request,msg_id):
 		'msg': msg,
 	}
 	return render(request,'pm/show.html', context)
+
+def reply(request,msg_id):
+	msgre = PMessage.objects.get(id = msg_id)
+	
+	msgtosend = PMessage()
+	
+	msgtosend.fromUser = request.user
+	msgtosend.toUser = msgre.fromUser
+	msgtosend.content = request.POST['content']
+	msgtosend.datetime = datetime.datetime.now()
+	msgtosend.subject = "RE: " + msgre.subject
+
+	msgtosend.save()
+
+	return render(request,"pm/outbox.html")

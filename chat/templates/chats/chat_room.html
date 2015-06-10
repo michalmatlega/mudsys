@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{{ chat.name }}</h1>
+<h1>{{chat.group.name}} | {{ chat.name }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -12,11 +12,19 @@
 <input type="submit" value="Send" />
 </form>
 
+<table class="table table-bordered" style="width:100%">
+
 {% for message in chat.message_set.all %}
-<ul>
-  <li>{{ message.datetime }}	|	{{ message.user }}:		{{ message.content }}</li>
-</ul>
+
+	<tr>
+		<td>{{message.datetime}}</td>
+		<td>{{message.user}}</td>
+		<td>{{message.content}}</td>
+	</tr>
+
 
 {% endfor %}
+
+</table>
 
 {% endblock %}
