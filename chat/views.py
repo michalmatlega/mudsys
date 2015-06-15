@@ -8,13 +8,16 @@ from django.contrib.auth.models import User, Group
 import datetime
  
 def index(request):
-	#if request.user.is_superuser:
+	chat_rooms = ChatRoom.objects.order_by('name')
 
-	chat_rooms = ChatRoom.objects.all
-	#else:
-	#	chat_rooms = ChatRoom.objects.filter(group = request.user.groups.all()[0])
+	context = {
+		'chat_list': chat_rooms,
+	}
+	return render(request,'chats/index.html', context)
+
+def indexByGroup(request):
+	chat_rooms = ChatRoom.objects.order_by('group__name')
 	
-	#chat_rooms = ChatRoom.objects.all
 	context = {
 		'chat_list': chat_rooms,
 	}

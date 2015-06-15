@@ -7,10 +7,10 @@
 {% if outbox_list %}
 <table class="table">
   <tr>
-    <th>Subject</th>
-    <th>From</th>
-    <th>Date</th>
-    <th>Read</th>
+    <th><a id="" href="{% url 'privmsg:outbox' %}">Subject</a></th>
+    <th><a id="" href="{% url 'privmsg:outboxByUser' %}">From</a></th>
+    <th><a id="" href="{% url 'privmsg:outboxByDate' %}">Date</a></th>
+    <th><a id="" href="{% url 'privmsg:outboxByRead' %}">Read</a></th>
   </tr>
 
   {% for msg in outbox_list %}

@@ -7,10 +7,10 @@
 {% if inbox_list %}
 <table class="table">
   <tr>
-    <th>Subject</th>
-    <th>From</th>
-    <th>Date</th>
-    <th>Read</th>
+    <th><a id="" href="{% url 'privmsg:inbox' %}">Subject</a></th>
+    <th><a id="" href="{% url 'privmsg:inboxByUser' %}">From</a></th>
+    <th><a id="" href="{% url 'privmsg:inboxByDate' %}">Date</a></th>
+    <th><a id="" href="{% url 'privmsg:inboxByRead' %}">Read</a></th>
   </tr>
 
   {% for msg in inbox_list %}

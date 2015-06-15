@@ -7,14 +7,56 @@ from django.contrib.auth.models import User
 import datetime
 
 def inbox(request):
-	inbox_list = PMessage.objects.filter(toUser = request.user)
+	inbox_list = PMessage.objects.filter(toUser = request.user).order_by('subject')
+	context = {
+		'inbox_list': inbox_list,
+	}
+	return render(request,'pm/inbox.html', context)
+
+def inboxByUser(request):
+	inbox_list = PMessage.objects.filter(toUser = request.user).order_by('fromUser__username')
+	context = {
+		'inbox_list': inbox_list,
+	}
+	return render(request,'pm/inbox.html', context)
+
+def inboxByDate(request):
+	inbox_list = PMessage.objects.filter(toUser = request.user).order_by('-datetime')
+	context = {
+		'inbox_list': inbox_list,
+	}
+	return render(request,'pm/inbox.html', context)
+
+def inboxByRead(request):
+	inbox_list = PMessage.objects.filter(toUser = request.user).order_by('-readdatetime')
 	context = {
 		'inbox_list': inbox_list,
 	}
 	return render(request,'pm/inbox.html', context)
 
 def outbox(request):
-	outbox_list = PMessage.objects.filter(fromUser = request.user)
+	outbox_list = PMessage.objects.filter(fromUser = request.user).order_by('subject')
+	context = {
+		'outbox_list': outbox_list,
+	}
+	return render(request,'pm/outbox.html', context)
+
+def outboxByUser(request):
+	outbox_list = PMessage.objects.filter(fromUser = request.user).order_by('toUser__username')
+	context = {
+		'outbox_list': outbox_list,
+	}
+	return render(request,'pm/outbox.html', context)
+
+def outboxByDate(request):
+	outbox_list = PMessage.objects.filter(fromUser = request.user).order_by('-datetime')
+	context = {
+		'outbox_list': outbox_list,
+	}
+	return render(request,'pm/outbox.html', context)
+
+def outboxByRead(request):
+	outbox_list = PMessage.objects.filter(fromUser = request.user).order_by('-readdatetime')
 	context = {
 		'outbox_list': outbox_list,
 	}
