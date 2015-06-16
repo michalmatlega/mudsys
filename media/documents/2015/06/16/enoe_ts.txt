@@ -1,0 +1,4 @@
+enoe.net-speak.pl:6310
+pass: enoe123
+room: RedButton
+passroom: dbc

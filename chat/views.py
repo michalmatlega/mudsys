@@ -5,6 +5,8 @@ from chat.models import ChatRoom, Message
 
 from django.contrib.auth.models import User, Group
 
+from history.models import Change
+
 import datetime
  
 def index(request):
@@ -35,6 +37,14 @@ def reply(request, chat_room_id):
 	m.datetime = datetime.datetime.now()
 	m.user = request.user
 	chat.message_set.add(m)
+
+	descstr = "Nowy post w " + chat.name
+
+	change = Change()
+	change.datetime = datetime.datetime.now()
+	change.description = descstr
+	change.user = request.user
+	change.save()
 	#chat.save()
 	return render(request, 'chats/chat_room.html', {'chat': chat})
 
