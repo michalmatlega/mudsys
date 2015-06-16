@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'fileman',
     'privmsg',
     'taskman',
+    'history',
 )
 
 MIDDLEWARE_CLASSES = (

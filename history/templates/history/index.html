@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available chats:</h2>
+
+{% if changes %}
+<table class="table">
+	<tr>
+		<th>Date</th>
+		<th>User</th>
+		<th>Description</th>
+	</tr>
+
+	{% for change in changes %}
+	<tr>
+		<td>{{ change.datetime }}</a></td>
+		<td>{{ change.user.username }}</td>
+		<td>{{ change.description }}</td>
+	</tr>
+	{% endfor %}
+</table>
+ 
+{% else %}
+ 
+There are no history yet.
+ 
+{% endif %}
+
+{% endblock %}
